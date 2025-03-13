@@ -56,7 +56,6 @@ build/
 *.zip
 *.rar
 *.txt
-*.vcxproj.filters
 
 # OS generated files #
 .DS_Store*
@@ -291,6 +290,7 @@ dkms.conf
 *.lo
 *.o
 *.obj
+*.vcxpproj.filters
 
 # Precompiled Headers
 *.gch
