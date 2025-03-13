@@ -291,7 +291,6 @@ dkms.conf
 *.lo
 *.o
 *.obj
-*.vcxproj
 *.vcxpproj.filters
 
 # Precompiled Headers
