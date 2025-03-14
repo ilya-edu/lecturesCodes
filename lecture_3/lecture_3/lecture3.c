@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS //for Visual C++
+#define _CRT_SECURE_NO_WARNINGS //for Visual C++
 #include <stdio.h>
 #include <conio.h>
 #include <locale.h>
