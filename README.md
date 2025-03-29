@@ -10,3 +10,5 @@
 
 **[Лекция 5](https://github.com/ilya-edu/lecturesCodes/tree/master/lecture_5)** -  Строки, массивы строк, работа с файлами
 
+**[Лекция 6](https://github.com/ilya-edu/lecturesCodes/tree/master/lecture_6)** -  Введение в структуры
+
