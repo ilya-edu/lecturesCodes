@@ -12,3 +12,5 @@
 
 **[Лекция 6](https://github.com/ilya-edu/lecturesCodes/tree/master/lecture_6)** -  Введение в структуры
 
+**[Лекция 7](https://github.com/ilya-edu/lecturesCodes/tree/master/lecture_7)** -  Работа со структурами
+
