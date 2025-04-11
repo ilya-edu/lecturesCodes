@@ -8,6 +8,10 @@ int main() {
   int a1 = 0;
   int a2 = 0;
 
+  unsigned short a = 10;
+  float b = 5.35;
+  printf("%hi\n", a);
+
   printf("Input a1 = ");
   scanf("%d", &a1);
   printf("Input a2 = ");

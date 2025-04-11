@@ -4,8 +4,8 @@
 #include <conio.h>
 #include <locale.h>
 #include <windows.h>
-#define NUM_STRINGS 3   // Количество строк
-#define MAX_LENGTH 100  // Максимальная длина каждой строки
+#define NUM_STRINGS 3   // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє
+#define MAX_LENGTH 100  // РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё
 #define FILENAME "output.txt"
 #define ARRSIZE(arr) (sizeof(arr) / sizeof(arr[0]))
 #define STOPPROG \
@@ -14,12 +14,12 @@ _getch();\
 return 0
 
 void printASKII();
-void flushBuff();//очистка буффера
-int countSymb(char symb, char str[], int* lenstr);//подсчет количества нужного символа
-void printArgMain(int argc, char* argv[]); //печать параметров из функции main
-void DynStrArrAndWriteInFile(); //динамические строки
-char* readFromFile(const char* filename); //чтение из файла
-void writeToFile(const char* filename, const char* str); //запись в файл
+void flushBuff();//РѕС‡РёСЃС‚РєР° Р±СѓС„С„РµСЂР°
+int countSymb(char symb, char str[], int* lenstr);//РїРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РЅСѓР¶РЅРѕРіРѕ СЃРёРјРІРѕР»Р°
+void printArgMain(int argc, char* argv[]); //РїРµС‡Р°С‚СЊ РїР°СЂР°РјРµС‚СЂРѕРІ РёР· С„СѓРЅРєС†РёРё main
+void DynStrArrAndWriteInFile(); //РґРёРЅР°РјРёС‡РµСЃРєРёРµ СЃС‚СЂРѕРєРё
+char* readFromFile(const char* filename); //С‡С‚РµРЅРёРµ РёР· С„Р°Р№Р»Р°
+void writeToFile(const char* filename, const char* str); //Р·Р°РїРёСЃСЊ РІ С„Р°Р№Р»
 
 
 int main(int argc, char* argv[]) {
@@ -32,86 +32,86 @@ int main(int argc, char* argv[]) {
   printf("%c ", *(ch + 2));
   printf("\n");
     
-  char str1[] = { 'H', 'e', 'l', 'l', 'o', '\0' }; // Явное задание символов и null-терминатора    
-  char str2[] = "Hello"; // Использование строкового литерала (null-терминатор добавляется автоматически)
-  char* str3 = "World"; // Указатель на строковый литерал (нельзя изменять содержимое)
+  char str1[] = { 'H', 'e', 'l', 'l', 'o', '\0' }; // РЇРІРЅРѕРµ Р·Р°РґР°РЅРёРµ СЃРёРјРІРѕР»РѕРІ Рё null-С‚РµСЂРјРёРЅР°С‚РѕСЂР°    
+  char str2[] = "Hello"; // РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЃС‚СЂРѕРєРѕРІРѕРіРѕ Р»РёС‚РµСЂР°Р»Р° (null-С‚РµСЂРјРёРЅР°С‚РѕСЂ РґРѕР±Р°РІР»СЏРµС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё)
+  char* str3 = "World"; // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃС‚СЂРѕРєРѕРІС‹Р№ Р»РёС‚РµСЂР°Р» (РЅРµР»СЊР·СЏ РёР·РјРµРЅСЏС‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ)
   printf("str1 %s\n", str1);
   printf("str2 %s\n", str2);
   printf("str3 %s\n", str3);
-  printf("str1 %c\n", *str1); //вывод первого символа str1
+  printf("str1 %c\n", *str1); //РІС‹РІРѕРґ РїРµСЂРІРѕРіРѕ СЃРёРјРІРѕР»Р° str1
   str2[0] = 'W';
   *(str2 + 1) = 'g';
   printf("str2 %c %c\n", str1[0], str2[1]);
-  printf("str3 %c\n", *str3); //вывод первого символа str3
-  //*str3 = 'R'; //ошибка, был создан указатель на строку, хранящуюся в разделе констант, и её изменение приведёт к неопределённому поведению
+  printf("str3 %c\n", *str3); //РІС‹РІРѕРґ РїРµСЂРІРѕРіРѕ СЃРёРјРІРѕР»Р° str3
+  //*str3 = 'R'; //РѕС€РёР±РєР°, Р±С‹Р» СЃРѕР·РґР°РЅ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃС‚СЂРѕРєСѓ, С…СЂР°РЅСЏС‰СѓСЋСЃСЏ РІ СЂР°Р·РґРµР»Рµ РєРѕРЅСЃС‚Р°РЅС‚, Рё РµС‘ РёР·РјРµРЅРµРЅРёРµ РїСЂРёРІРµРґС‘С‚ Рє РЅРµРѕРїСЂРµРґРµР»С‘РЅРЅРѕРјСѓ РїРѕРІРµРґРµРЅРёСЋ
   //printf("str3 %c\n", *str3);
 
 
-  //..................ввод символов
+  //..................РІРІРѕРґ СЃРёРјРІРѕР»РѕРІ
   char c1, c2;
   printf("Input first symbol ");
-  scanf(" %c", &c1); // пробел перед %c помогает, чтобы не перескакивало, иначе запишется символ новой строки в следующий scanf
+  scanf(" %c", &c1); // РїСЂРѕР±РµР» РїРµСЂРµРґ %c РїРѕРјРѕРіР°РµС‚, С‡С‚РѕР±С‹ РЅРµ РїРµСЂРµСЃРєР°РєРёРІР°Р»Рѕ, РёРЅР°С‡Рµ Р·Р°РїРёС€РµС‚СЃСЏ СЃРёРјРІРѕР» РЅРѕРІРѕР№ СЃС‚СЂРѕРєРё РІ СЃР»РµРґСѓСЋС‰РёР№ scanf
   printf("Input second symbol ");
   scanf(" %c", &c2);
   printf("(char)c1=%c (char)c2=%c (int)c1=%i (int)c2=%i\n", c1, c2, c1, c2);
-  flushBuff();//очистка буффера, ожидание нажатия enter
+  flushBuff();//РѕС‡РёСЃС‚РєР° Р±СѓС„С„РµСЂР°, РѕР¶РёРґР°РЅРёРµ РЅР°Р¶Р°С‚РёСЏ enter
 
-  //.......................введение в строки
+  //.......................РІРІРµРґРµРЅРёРµ РІ СЃС‚СЂРѕРєРё
   char testArr1[5];
-  printf("Введите строку размером не больше %d\n", (int)(ARRSIZE(testArr1) - 1));
-  gets(testArr1);//если ввести больше символов, то будет ошибка, максимум sizeof(arr) - 1, т.к. последний символ '\0' - признак конца строки
+  printf("Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ СЂР°Р·РјРµСЂРѕРј РЅРµ Р±РѕР»СЊС€Рµ %d\n", (int)(ARRSIZE(testArr1) - 1));
+  gets(testArr1);//РµСЃР»Рё РІРІРµСЃС‚Рё Р±РѕР»СЊС€Рµ СЃРёРјРІРѕР»РѕРІ, С‚Рѕ Р±СѓРґРµС‚ РѕС€РёР±РєР°, РјР°РєСЃРёРјСѓРј sizeof(arr) - 1, С‚.Рє. РїРѕСЃР»РµРґРЅРёР№ СЃРёРјРІРѕР» '\0' - РїСЂРёР·РЅР°Рє РєРѕРЅС†Р° СЃС‚СЂРѕРєРё
   printf("%s\n", testArr1);
   
-  printf("Введите строку размером не больше %d\n", (int)ARRSIZE(testArr1) - 1);
-  fgets(testArr1, sizeof(testArr1), stdin);//проверка длины строки, если ввести больше, то все будет ok
+  printf("Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ СЂР°Р·РјРµСЂРѕРј РЅРµ Р±РѕР»СЊС€Рµ %d\n", (int)ARRSIZE(testArr1) - 1);
+  fgets(testArr1, sizeof(testArr1), stdin);//РїСЂРѕРІРµСЂРєР° РґР»РёРЅС‹ СЃС‚СЂРѕРєРё, РµСЃР»Рё РІРІРµСЃС‚Рё Р±РѕР»СЊС€Рµ, С‚Рѕ РІСЃРµ Р±СѓРґРµС‚ ok
   printf("%s\n", testArr1);
   
-  //fflush(stdin); //нестандартное решение для очистки потока ввода и невсегда работает
-  flushBuff(); //очистка буффера ввода через \n
-  printf("Введите строку размером не больше %d\n", (int)ARRSIZE(testArr1) - 1);
+  //fflush(stdin); //РЅРµСЃС‚Р°РЅРґР°СЂС‚РЅРѕРµ СЂРµС€РµРЅРёРµ РґР»СЏ РѕС‡РёСЃС‚РєРё РїРѕС‚РѕРєР° РІРІРѕРґР° Рё РЅРµРІСЃРµРіРґР° СЂР°Р±РѕС‚Р°РµС‚
+  flushBuff(); //РѕС‡РёСЃС‚РєР° Р±СѓС„С„РµСЂР° РІРІРѕРґР° С‡РµСЂРµР· \n
+  printf("Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ СЂР°Р·РјРµСЂРѕРј РЅРµ Р±РѕР»СЊС€Рµ %d\n", (int)ARRSIZE(testArr1) - 1);
   gets_s(testArr1, (ARRSIZE(testArr1) - 1));
   printf("%s\n", testArr1);
   printf("1-%c, 2-%c \n", testArr1[0], testArr1[1]);
 
-  char mas[] = { "hello" }; // символ конца строки
+  char mas[] = { "hello" }; // СЃРёРјРІРѕР» РєРѕРЅС†Р° СЃС‚СЂРѕРєРё
   printf("strlen mas=%d\n", strlen(mas)); //5
   printf("sizeof(mas)=% d\n", sizeof(mas));//6
  
-  printf("Введите символ для поиска его кол-ва в строке \"%s\" ", mas);
+  printf("Р’РІРµРґРёС‚Рµ СЃРёРјРІРѕР» РґР»СЏ  РїРѕРёСЃРєР° РµРіРѕ РєРѕР»-РІР° РІ СЃС‚СЂРѕРєРµ \"%s\" ", mas);
   char sym;
   int lens = 0;
   scanf(" %c", &sym);
-  printf("Количество символов %d, размер массива %d\n", countSymb(sym, mas, &lens), lens);
+  printf("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ %d, СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР° %d\n", countSymb(sym, mas, &lens), lens);
 
-  char src[] = "Привет";
+  char src[] = "РџСЂРёРІРµС‚";
   char dest[20];
-  strcpy(dest, src); // Копируем строку
-  printf("Копия: %s\n", dest);
+  strcpy(dest, src); // РљРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
+  printf("РљРѕРїРёСЏ: %s\n", dest);
 
   char str4[20] = "Hello ";
   char str5[] = "World!";
-  strcat(str4, str5); // Добавляем str5 в конец str4
+  strcat(str4, str5); // Р”РѕР±Р°РІР»СЏРµРј str5 РІ РєРѕРЅРµС† str4
   printf("%s\n", str4);
 
-  ///.................................массив строк
+  ///.................................РјР°СЃСЃРёРІ СЃС‚СЂРѕРє
   char* name[] = { "Vanv", "test" };
   char* first = "test";
   char* second = "tast";
 
-  if (strcmp(first, second) == 0)//стравнение двух строк
+  if (strcmp(first, second) == 0)//СЃС‚СЂР°РІРЅРµРЅРёРµ РґРІСѓС… СЃС‚СЂРѕРє
     printf("hello\n");
 
-  char* str[] = { "Hello","My", "New" };//массив строк
-  printf("%s ", *str);//вывод первого массива
-  printf("%s ", *(str + 1));//вывод второго массива
-  printf("%s ", *(str + 2));//вывод третьего массива
+  char* str[] = { "Hello","My", "New" };//РјР°СЃСЃРёРІ СЃС‚СЂРѕРє
+  printf("%s ", *str);//РІС‹РІРѕРґ РїРµСЂРІРѕРіРѕ РјР°СЃСЃРёРІР°
+  printf("%s ", *(str + 1));//РІС‹РІРѕРґ РІС‚РѕСЂРѕРіРѕ РјР°СЃСЃРёРІР°
+  printf("%s ", *(str + 2));//РІС‹РІРѕРґ С‚СЂРµС‚СЊРµРіРѕ РјР°СЃСЃРёРІР°
 
   printf("\n\n");
-  printf("%c ", **str);//вывод первого символа первого массива
-  printf("%c ", **(str + 1));//вывод первого символа второго массива
-  printf("%c ", **(str + 2));//вывод первого символа третьего массива
+  printf("%c ", **str);//РІС‹РІРѕРґ РїРµСЂРІРѕРіРѕ СЃРёРјРІРѕР»Р° РїРµСЂРІРѕРіРѕ РјР°СЃСЃРёРІР°
+  printf("%c ", **(str + 1));//РІС‹РІРѕРґ РїРµСЂРІРѕРіРѕ СЃРёРјРІРѕР»Р° РІС‚РѕСЂРѕРіРѕ РјР°СЃСЃРёРІР°
+  printf("%c ", **(str + 2));//РІС‹РІРѕРґ РїРµСЂРІРѕРіРѕ СЃРёРјРІРѕР»Р° С‚СЂРµС‚СЊРµРіРѕ РјР°СЃСЃРёРІР°
 
-  printf("\n\n"); //вывод H e l l o
+  printf("\n\n"); //РІС‹РІРѕРґ H e l l o
   printf("%c ", **str);
   printf("%c ", *(*str + 1));
   printf("%c ", *(*str + 2));
@@ -120,14 +120,14 @@ int main(int argc, char* argv[]) {
 
   DynStrArrAndWriteInFile();
 
-  printArgMain(argc, argv);//печать аргументов main()
+  printArgMain(argc, argv);//РїРµС‡Р°С‚СЊ Р°СЂРіСѓРјРµРЅС‚РѕРІ main()
 
   STOPPROG;
 }
 
 void flushBuff() {
   int c;
-  while ((c = getchar()) != '\n' && c != EOF);// Очистка входного буфера
+  while ((c = getchar()) != '\n' && c != EOF);// РћС‡РёСЃС‚РєР° РІС…РѕРґРЅРѕРіРѕ Р±СѓС„РµСЂР°
 }
 
 void printASKII()
@@ -159,46 +159,46 @@ int countSymb(char symb, char str[], int* lenstr)
 
 void DynStrArrAndWriteInFile() {
   
-  // Выделяем память для массива указателей на строки
+  // Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РґР»СЏ РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° СЃС‚СЂРѕРєРё
   char** strings = (char**)malloc(NUM_STRINGS * sizeof(char*));
   if (strings == NULL) {
-    printf("Ошибка выделения памяти\n");
+    printf("РћС€РёР±РєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё\n");
     return;
   }
-  // Выделяем память для каждой строки
+  // Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РґР»СЏ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё
   for (int i = 0; i < NUM_STRINGS; i++) {
     strings[i] = (char*)malloc(MAX_LENGTH * sizeof(char));
     if (strings[i] == NULL) {
-      printf("Ошибка выделения памяти для строки %d\n", i);
+      printf("РћС€РёР±РєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё РґР»СЏ СЃС‚СЂРѕРєРё %d\n", i);
       return;
     }
   }
-  // Ввод строк
-  printf("Введите три строки:\n");
+  // Р’РІРѕРґ СЃС‚СЂРѕРє
+  printf("Р’РІРµРґРёС‚Рµ С‚СЂРё СЃС‚СЂРѕРєРё:\n");
   for (int i = 0; i < NUM_STRINGS; i++) {
-    printf("Строка %d: ", i + 1);
+    printf("РЎС‚СЂРѕРєР° %d: ", i + 1);
     fgets(strings[i], MAX_LENGTH, stdin);
-    strings[i][strcspn(strings[i], "\n")] = '\0'; // Удаляем символ новой строки
+    strings[i][strcspn(strings[i], "\n")] = '\0'; // РЈРґР°Р»СЏРµРј СЃРёРјРІРѕР» РЅРѕРІРѕР№ СЃС‚СЂРѕРєРё
   }
 
-  // Вывод строк
-  printf("\nВы ввели:\n");
+  // Р’С‹РІРѕРґ СЃС‚СЂРѕРє
+  printf("\nР’С‹ РІРІРµР»Рё:\n");
   for (int i = 0; i < NUM_STRINGS; i++) {
     printf("%s\n", strings[i]);
   }
 
-  // Запись первой строки в файл
+  // Р—Р°РїРёСЃСЊ РїРµСЂРІРѕР№ СЃС‚СЂРѕРєРё РІ С„Р°Р№Р»
   writeToFile(FILENAME, strings[0]);
-  printf("Строка записана в файл: %s\n", strings[0]);
+  printf("РЎС‚СЂРѕРєР° Р·Р°РїРёСЃР°РЅР° РІ С„Р°Р№Р»: %s\n", strings[0]);
 
-  // Чтение строки из файла
+  // Р§С‚РµРЅРёРµ СЃС‚СЂРѕРєРё РёР· С„Р°Р№Р»Р°
   char* fileContent = readFromFile(FILENAME);
   if (fileContent != NULL) {
-    printf("Прочитанная строка из файла: %s\n", fileContent);
+    printf("РџСЂРѕС‡РёС‚Р°РЅРЅР°СЏ СЃС‚СЂРѕРєР° РёР· С„Р°Р№Р»Р°: %s\n", fileContent);
     free(fileContent);
   }
 
-  // Освобождение памяти
+  // РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
   for (int i = 0; i < NUM_STRINGS; i++) {
     free(strings[i]);
   }
@@ -208,13 +208,13 @@ void DynStrArrAndWriteInFile() {
 char* readFromFile(const char* filename) {
   FILE* file = fopen(filename, "r");
   if (file == NULL) {
-    printf("Ошибка открытия файла для чтения\n");
+    printf("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РґР»СЏ С‡С‚РµРЅРёСЏ\n");
     return NULL;
   }
 
   char* buffer = (char*)malloc(MAX_LENGTH * sizeof(char));
   if (buffer == NULL) {
-    printf("Ошибка выделения памяти\n");
+    printf("РћС€РёР±РєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё\n");
     fclose(file);
     return NULL;
   }
@@ -232,7 +232,7 @@ char* readFromFile(const char* filename) {
 void writeToFile(const char* filename, const char* str) {
   FILE* file = fopen(filename, "w");
   if (file == NULL) {
-    printf("Ошибка открытия файла для записи\n");
+    printf("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё\n");
     return;
   }
   fprintf(file, "%s", str);

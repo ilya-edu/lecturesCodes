@@ -2,7 +2,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-const char* figureNames[] = { "None", "Rect", "Triag", "Cyrcle" };//чтобы выводить тип enum 
+const char* figureNames[] = { "None", "Rect", "Triag", "Cyrcle" };//С‡С‚РѕР±С‹ РІС‹РІРѕРґРёС‚СЊ С‚РёРї enum 
 
 int myAdd(int a, int b) {
   return a + b;
@@ -11,7 +11,7 @@ int mySub(int a, int b) {
   return a - b;
 }
 
-Rect* CreateRect() //создание объекта Rect
+Rect* CreateRect() //СЃРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° Rect
 {
   Rect* p = NULL;
   p = (Rect*)malloc(sizeof(Rect));
@@ -25,7 +25,7 @@ Rect* CreateRect() //создание объекта Rect
   return p;
 }
 
-Cyrcle* CreateCyrcle() //создание объекта Cyrcle
+Cyrcle* CreateCyrcle() //СЃРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° Cyrcle
 {
   int rad = 0;
   Cyrcle* p = (Cyrcle*)malloc(sizeof(Cyrcle));
@@ -38,7 +38,7 @@ Cyrcle* CreateCyrcle() //создание объекта Cyrcle
   return p;
 }
 
-Triangle* CreateTriangle() //создание объекта Triangle
+Triangle* CreateTriangle() //СЃРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° Triangle
 {
   Triangle* p = (Triangle*)malloc(sizeof(Triangle));
   if (p == NULL)
@@ -52,19 +52,19 @@ Triangle* CreateTriangle() //создание объекта Triangle
   return p;
 }
 
-void printRectArr(Rect arrStrt[], int size) { //передача копии массива структур
+void printRectArr(Rect arrStrt[], int size) { //РїРµСЂРµРґР°С‡Р° РєРѕРїРёРё РјР°СЃСЃРёРІР° СЃС‚СЂСѓРєС‚СѓСЂ
   for (int i = 0; i < size; i++)
     printf("Rect[%d]: kind=%d, x=%.2f, y=%.2f\n", i, arrStrt[i].kind, arrStrt[i].x, arrStrt[i].y);
 }
 
 void printRect(Rect r) {
   printf("Rect: kind=%d, %.2f, %.2f\n", r.kind, r.x, r.y);
-  r.y = r.y * 2; //пробуем изменить параметр, не получится
+  r.y = r.y * 2; //РїСЂРѕР±СѓРµРј РёР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂ, РЅРµ РїРѕР»СѓС‡РёС‚СЃСЏ
 }
 
 void printRectPtr(Rect *r) {
   printf("RectPtr: kind=%d, %.2f, %.2f\n", r->kind, r->x, r->y);
-  r->y = r->y * 2; //пробуем изменить параметр, получится
+  r->y = r->y * 2; //РїСЂРѕР±СѓРµРј РёР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂ, РїРѕР»СѓС‡РёС‚СЃСЏ
 }
 
 float rectArea(void* data) {
@@ -91,7 +91,7 @@ float triagArea(void* data) {
 
 void printInsideObj(void** pobj, int ord)
 {
-  Figures kind = *((Figures*)pobj[ord]);//достаем первые 4 байта в каждом объекте, т.к. enum вначале у каждой структуры
+  Figures kind = *((Figures*)pobj[ord]);//РґРѕСЃС‚Р°РµРј РїРµСЂРІС‹Рµ 4 Р±Р°Р№С‚Р° РІ РєР°Р¶РґРѕРј РѕР±СЉРµРєС‚Рµ, С‚.Рє. enum РІРЅР°С‡Р°Р»Рµ Сѓ РєР°Р¶РґРѕР№ СЃС‚СЂСѓРєС‚СѓСЂС‹
   Shape* myShape = NULL;
   myShape = (Shape*)malloc(sizeof(Shape));  
 

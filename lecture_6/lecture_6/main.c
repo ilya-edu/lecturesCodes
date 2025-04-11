@@ -1,43 +1,43 @@
-#include "main.h" // собстенный файл
-#include <crtdbg.h> // проверка на утечки памяти
+#include "main.h" // СЃРѕР±СЃС‚РµРЅРЅС‹Р№ С„Р°Р№Р»
+#include <crtdbg.h> // РїСЂРѕРІРµСЂРєР° РЅР° СѓС‚РµС‡РєРё РїР°РјВ¤С‚Рё
 
 int main(int argc, char* argv[])
 {
-  //введение в структуры
-  myType myVar; //переменная новго типа
-  MyData myStrtData; //создаем экземпляр структуры
+  //РІРІРµРґРµРЅРёРµ РІ СЃС‚СЂСѓРєС‚СѓСЂС‹
+  myType myVar; //РїРµСЂРµРјРµРЅРЅР°В¤ РЅРѕРІРіРѕ С‚РёРїР°
+  MyData myStrtData; //СЃРѕР·РґР°РµРј СЌРєР·РµРјРїР»В¤СЂ СЃС‚СЂСѓРєС‚СѓСЂС‹
   myStrtData.a_int = 10;
   myStrtData.v_double = 10.13;
   myStrtData.mass[0] = 100;
-  struct _mydataWithoutTypedef strWthTpdf; //создаем экземпляр структуры, который был объявлен без typedef
+  struct _mydataWithoutTypedef strWthTpdf; //СЃРѕР·РґР°РµРј СЌРєР·РµРјРїР»В¤СЂ СЃС‚СЂСѓРєС‚СѓСЂС‹, РєРѕС‚РѕСЂС‹Р№ Р±С‹Р» РѕР±СЉВ¤РІР»РµРЅ Р±РµР· typedef
   strWthTpdf.a = 'a';
-  MyData myStrtData1; //другой экземпляр структуры
+  MyData myStrtData1; //РґСЂСѓРіРѕР№ СЌРєР·РµРјРїР»В¤СЂ СЃС‚СЂСѓРєС‚СѓСЂС‹
   myStrtData1.a_int = 20;
   
   printf("Struct myStrtData a_int=%d v_double=%.2lf mass[0]=%d\n\
           \rStruct strWthTpdf a=%c\n\
           \rStruct myStrtData1 a_int=%d\n", myStrtData.a_int, myStrtData.v_double, myStrtData.mass[0], strWthTpdf.a, myStrtData1.a_int);
   
-  MyData myStrtData2 = {'c', 20, 50.3, "Hello"};//создание и заполнение экземпляра структуры
+  MyData myStrtData2 = {'c', 20, 50.3, "Hello"};//СЃРѕР·РґР°РЅРёРµ Рё Р·Р°РїРѕР»РЅРµРЅРёРµ СЌРєР·РµРјРїР»В¤СЂР° СЃС‚СЂСѓРєС‚СѓСЂС‹
   printf("myStrtData2 = '%c', %d, %.2lf, %s\n", myStrtData2.c_char, myStrtData2.a_int, myStrtData2.v_double, myStrtData2.mass);
 
-  //размер структур
-  printf("sizeof(MyData) = %d\n", sizeof(MyData));//одинаковые поля, но разные размеры
-  printf("sizeof(MyDataSize) = %d\n", sizeof(MyDataSize));//т.к. другая последовательность
+  //СЂР°Р·РјРµСЂ СЃС‚СЂСѓРєС‚СѓСЂ
+  printf("sizeof(MyData) = %d\n", sizeof(MyData));//РѕРґРёРЅР°РєРѕРІС‹Рµ РїРѕР»В¤, РЅРѕ СЂР°Р·РЅС‹Рµ СЂР°Р·РјРµСЂС‹
+  printf("sizeof(MyDataSize) = %d\n", sizeof(MyDataSize));//С‚.Рє. РґСЂСѓРіР°В¤ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ
 
-  //перечислямый тип данных
+  //РїРµСЂРµС‡РёСЃР»В¤РјС‹Р№ С‚РёРї РґР°РЅРЅС‹С…
   Figures kind;
   kind = rect;
   printf("kind %d \n", kind);
 
   //union
-  myUnion myUnvar; //хранит только одно значение, при записи нового значения, предыдущее поле теряет данные
+  myUnion myUnvar; //С…СЂР°РЅРёС‚ С‚РѕР»СЊРєРѕ РѕРґРЅРѕ Р·РЅР°С‡РµРЅРёРµ, РїСЂРё Р·Р°РїРёСЃРё РЅРѕРІРѕРіРѕ Р·РЅР°С‡РµРЅРёВ¤, РїСЂРµРґС‹РґСѓС‰РµРµ РїРѕР»Рµ С‚РµСЂВ¤РµС‚ РґР°РЅРЅС‹Рµ
   myUnvar.i = 10;
-  printf("myUnvar i=%d f=%f\n", myUnvar.i, myUnvar.f); //выведется i
+  printf("myUnvar i=%d f=%f\n", myUnvar.i, myUnvar.f); //РІС‹РІРµРґРµС‚СЃВ¤ i
   myUnvar.f = 5.3;
-  printf("myUnvar i=%d f=%f\n", myUnvar.i, myUnvar.f); //выведется f
+  printf("myUnvar i=%d f=%f\n", myUnvar.i, myUnvar.f); //РІС‹РІРµРґРµС‚СЃВ¤ f
 
-  //динамическое выделение памяти под структуру
+  //РґРёРЅР°РјРёС‡РµСЃРєРѕРµ РІС‹РґРµР»РµРЅРёРµ РїР°РјВ¤С‚Рё РїРѕРґ СЃС‚СЂСѓРєС‚СѓСЂСѓ
   Rect newRect;
   Rect* pR = CreateRect();
   printf("pR->x=%d \n", pR->x);
@@ -46,13 +46,13 @@ int main(int argc, char* argv[])
   void* ppAddObj1 = CreateRect();
   void* ppAddObj2 = CreateCyrcle();
 
-  Figures kindStrc = *((Figures*)ppAddObj1); //обращение к полям
-  Figures kindStrc1 = ((Rect*)ppAddObj2)->kind; //обращение к полям
+  Figures kindStrc = *((Figures*)ppAddObj1); //РѕР±СЂР°С‰РµРЅРёРµ Рє РїРѕР»В¤Рј
+  Figures kindStrc1 = ((Rect*)ppAddObj2)->kind; //РѕР±СЂР°С‰РµРЅРёРµ Рє РїРѕР»В¤Рј
 
-  free(ppAddObj1); //освобождение памяти
-  free(ppAddObj2); //освобождение памяти
+  free(ppAddObj1); //РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјВ¤С‚Рё
+  free(ppAddObj2); //РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјВ¤С‚Рё
 
-  _CrtDumpMemoryLeaks(); //проверка на утечки
+  _CrtDumpMemoryLeaks(); //РїСЂРѕРІРµСЂРєР° РЅР° СѓС‚РµС‡РєРё
   _getch();
   return 0;
 }

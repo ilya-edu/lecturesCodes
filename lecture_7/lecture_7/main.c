@@ -4,48 +4,48 @@
 
 int main(int argc, char* argv[])
 {
-  printf("sizeRect = %zd\n", sizeof(Rect));
-  printf("sizeTrian = %zd\n", sizeof(Triangle));
-  printf("sizeCyrc = %zd\n", sizeof(Cyrcle));
+  //printf("sizeRect = %zd\n", sizeof(Rect));
+  //printf("sizeTrian = %zd\n", sizeof(Triangle));
+  //printf("sizeCyrc = %zd\n", sizeof(Cyrcle));
 
-  //ïåðåäà÷à ñòðóêòóð â ôóíêöèþ
-  Figures kindStrt = rect;
-  Rect myRect = { kindStrt, 10, 20 };
-  printRect(myRect); //ïåðåäàåòñÿ êîïèÿ ñòðóêòóðû
-  printf("Rect: %d %.2f %.2f\n", myRect.kind, myRect.x, myRect.y);
-  printRectPtr(&myRect); //ïåðåäàåòñÿ àäðåñ ñòðóêòóðû
-  printf("RectPtr: %d %.2f %.2f\n", myRect.kind, myRect.x, myRect.y);
+  ////Ð¿ÐµÑ€ÐµÐ´Ð°Ñ‡Ð° ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€ Ð² Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑŽ
+  //Figures kindStrt = rect;
+  //Rect myRect = { kindStrt, 10, 20 };
+  //printRect(myRect); //Ð¿ÐµÑ€ÐµÐ´Ð°ÐµÑ‚ÑÑ ÐºÐ¾Ð¿Ð¸Ñ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñ‹
+  //printf("Rect: %d %.2f %.2f\n", myRect.kind, myRect.x, myRect.y);
+  //printRectPtr(&myRect); //Ð¿ÐµÑ€ÐµÐ´Ð°ÐµÑ‚ÑÑ Ð°Ð´Ñ€ÐµÑ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñ‹
+  //printf("RectPtr: %d %.2f %.2f\n", myRect.kind, myRect.x, myRect.y);
 
-  Rect arrRects[3] = {
-    {kindStrt, 10, 20},
-    {kindStrt, 100, 2000},
-    {kindStrt, 1000, 2000},
-  };
-  printRectArr(arrRects, 3); //ïåðåäà÷à ìàññèâ ñòðóêòóð â ôóíêöèþ
-  
-  //óêàçàòåëè íà ôóíêöèþ
+  //Rect arrRects[3] = {
+  //  {kindStrt, 10, 20},
+  //  {kindStrt, 100, 2000},
+  //  {kindStrt, 1000, 2000},
+  //};
+  //printRectArr(arrRects, 3); //Ð¿ÐµÑ€ÐµÐ´Ð°Ñ‡Ð° Ð¼Ð°ÑÑÐ¸Ð² ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€ Ð² Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑŽ
+  //_getch();
+  //ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»Ð¸ Ð½Ð° Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑŽ
   myAddSub foo = myAdd;
-  printf("10+9 = %d\n", foo(10, 9));//âåðíåò ñóììó
+  printf("10+9 = %d\n", foo(10, 9));//Ð²ÐµÑ€Ð½ÐµÑ‚ ÑÑƒÐ¼Ð¼Ñƒ
   foo = mySub;
-  printf("10-9 = %d\n", foo(10, 9));//âåðíåò ðàçíîñòü
+  printf("10-9 = %d\n", foo(10, 9));//Ð²ÐµÑ€Ð½ÐµÑ‚ Ñ€Ð°Ð·Ð½Ð¾ÑÑ‚ÑŒ
 
-  //ðàáîòà ñî ñòðóêòóðàìè
-  void* ppAddObj[] = { NULL, NULL, NULL }; //ìàññèâ óêàçàòåëåé
-  ppAddObj[0] = CreateRect(); //ñîçäàåì îáúúåêòû ñòðóêòóðû è çàïèñûâàåì óêàçàòåëè íà íèõ â ìàññèâ
+  //Ñ€Ð°Ð±Ð¾Ñ‚Ð° ÑÐ¾ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð°Ð¼Ð¸
+  void* ppAddObj[] = { NULL, NULL, NULL }; //Ð¼Ð°ÑÑÐ¸Ð² ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÐµÐ¹
+  ppAddObj[0] = CreateRect(); //ÑÐ¾Ð·Ð´Ð°ÐµÐ¼ Ð¾Ð±ÑŠÑŠÐµÐºÑ‚Ñ‹ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñ‹ Ð¸ Ð·Ð°Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»Ð¸ Ð½Ð° Ð½Ð¸Ñ… Ð² Ð¼Ð°ÑÑÐ¸Ð²
   ppAddObj[1] = CreateCyrcle();
   ppAddObj[2] = CreateTriangle();
   
-  ((Rect*)(ppAddObj[0]))->x = 10.1; //çàïîíÿåì ïîëÿ îáúåêòîâ, todo - òàê ïëîõî, ò.ê. íåïîíÿòíî, ãäå êàêîé îáúåêò íàõîäèòñÿ
+  ((Triangle*)(ppAddObj[0]))->x = 10.1; //Ð·Ð°Ð¿Ð¾Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ñ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð², todo - Ñ‚Ð°Ðº Ð¿Ð»Ð¾Ñ…Ð¾, Ñ‚.Ðº. Ð½ÐµÐ¿Ð¾Ð½ÑÑ‚Ð½Ð¾, Ð³Ð´Ðµ ÐºÐ°ÐºÐ¾Ð¹ Ð¾Ð±ÑŠÐµÐºÑ‚ Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑÑ
   ((Rect*)(ppAddObj[0]))->y = 20.2;
   ((Cyrcle*)(ppAddObj[1]))->radius = 15;
   ((Triangle*)(ppAddObj[2]))->x = 3.0;
   ((Triangle*)(ppAddObj[2]))->y = 4.0;
   ((Triangle*)(ppAddObj[2]))->z = 5.0;
-
+  _getch();
   //myFoo func = printInsideObj;
   int i = 0;
   size_t sizeArr = sizeof(ppAddObj) / sizeof(ppAddObj[0]);
-  while (i < sizeArr) //ïå÷àòàåì, ÷òî ñîäåðæàò ïîëÿ îáúåêòîâ
+  while (i < sizeArr) //Ð¿ÐµÑ‡Ð°Ñ‚Ð°ÐµÐ¼, Ñ‡Ñ‚Ð¾ ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‚ Ð¿Ð¾Ð»Ñ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð²
   {
     if (ppAddObj[i] == NULL)
       continue;
