@@ -14,3 +14,5 @@
 
 **[Лекция 7](https://github.com/ilya-edu/lecturesCodes/tree/master/lecture_7)** -  Работа со структурами
 
+**[Лекция 8](https://github.com/ilya-edu/lecturesCodes/tree/master/lecture_8)** -  Очень очень кратко про C++
+
